@@ -1,5 +1,6 @@
 package com.teste.users;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,9 +26,10 @@ public class UsersApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		List<User> users = new ArrayList<>();
+		SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
 		
 		for (int i = 1; i <= 100; i++) {
-			users.add(new User(null, "Usuario " + i, "usuario." + i +"@teste.com"));
+			users.add(new User(i, "u."+i+".user", "password", true, date.parse("31/12/2020"), "Usuário", "da Silva", "usuario." + i +"@teste.com", "3199999999"));
 		}
 		
 		userRepository.saveAll(users);
