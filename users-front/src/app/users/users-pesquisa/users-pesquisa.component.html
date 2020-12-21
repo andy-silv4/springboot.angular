@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="ui-g">
+
+    <form autocomplete="off" (ngSubmit)="search()">
+
+      <div class="ui-g-12">
+        <h1>Usuários</h1>
+      </div>
+
+      <div class="ui-g-4 ui-fluid">
+        <label>Usuário</label>
+        <input pInputText type="text" name="username"
+          [(ngModel)]="filter.username">
+      </div>
+
+      <div class="ui-g-4 ui-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="name"
+          [(ngModel)]="filter.name">
+      </div>
+
+      <div class="ui-g-4 ui-fluid">
+        <label>E-mail</label>
+        <input pInputText type="text" name="email"
+          [(ngModel)]="filter.email">
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="ui-g">
+    <div class="ui-g-16">
+      <p-dataTable styleClass="col-align" [value]="users" [paginator]="true" [rows]="filter.size" 
+          [lazy]=true [totalRecords]="totalElements" (onLazyLoad)="test($event)"
+          [responsive]="true" emptyMessage="Nenhum registro econtrado">
+        <p-column field="id" header="ID" styleClass="col-id" ></p-column>
+        <p-column field="username" header="Usuário" styleClass="col-user"></p-column>
+        <p-column field="is_enabled" header="Ativo" styleClass="col-active" ></p-column>
+        <p-column header="Data Registro" styleClass="col-data">
+            <ng-template let-user="rowData" pTemplate="body">
+                <span>{{ user.registerDate | date:'dd/MM/yyyy' }}</span>
+            </ng-template>
+        </p-column>
+        <p-column field="name" header="Nome"></p-column>
+        <p-column field="surname" header="Sobrenome"></p-column>
+        <p-column field="email" header="E-mail" styleClass="col-email"></p-column>
+        <p-column field="phone" header="Phone" styleClass="col-phone"></p-column>
+      </p-dataTable>
+    </div>
+
+  </div>
+
+</div>
