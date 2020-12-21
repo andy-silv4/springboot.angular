@@ -33,6 +33,20 @@ public class User implements Serializable {
 		this.email = email;
 	}
 	
+	public User(Integer id, String username, String password,
+				boolean isEnabled, Date registerDate, String name,
+				String surname, String email, String phone) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.isEnabled = isEnabled;
+		this.registerDate = registerDate;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.phone = phone;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
@@ -67,7 +81,7 @@ public class User implements Serializable {
 		this.isEnabled = isEnabled;
 	}
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	public Date getRegisterDate() {
 		return registerDate;
 	}
