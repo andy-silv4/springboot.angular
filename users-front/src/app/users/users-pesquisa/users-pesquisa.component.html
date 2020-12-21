@@ -39,12 +39,12 @@
           [responsive]="true" emptyMessage="Nenhum registro econtrado">
         <p-column field="id" header="ID" styleClass="col-id" ></p-column>
         <p-column field="username" header="Usuário" styleClass="col-user"></p-column>
-        <p-column field="is_enabled" header="Ativo" styleClass="col-active" ></p-column>
-        <p-column header="Data Registro" styleClass="col-data">
-            <ng-template let-user="rowData" pTemplate="body">
-                <span>{{ user.registerDate | date:'dd/MM/yyyy' }}</span>
-            </ng-template>
+        <p-column field="enabled" header="Status" styleClass="col-active" >
+          <ng-template let-user="rowData" pTemplate="body">
+                {{ user.enabled ? 'Ativo' : 'Inativo' }}
+          </ng-template>
         </p-column>
+        <p-column field="registerDate" header="Data Registro" styleClass="col-data" ></p-column>
         <p-column field="name" header="Nome"></p-column>
         <p-column field="surname" header="Sobrenome"></p-column>
         <p-column field="email" header="E-mail" styleClass="col-email"></p-column>
