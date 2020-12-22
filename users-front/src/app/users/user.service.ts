@@ -9,7 +9,7 @@ export class UserFilter {
   name: string;
   email: string;
   page = 0;
-  size = 15;
+  size = 10;
 }
 
 @Injectable()
